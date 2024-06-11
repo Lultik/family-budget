@@ -1,11 +1,13 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export default function Home() {
   return (
     <main className={styles.main}>
       <Analytics />
+      <SpeedInsights />
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
