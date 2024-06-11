@@ -4,6 +4,7 @@
   "main": "dist/index.ts",
   "license": "MIT",
   "scripts": {
+    "start": "yarn dev-common",
     "dev-common": "tsc -w"
   },
   "dependencies": {
