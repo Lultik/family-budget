@@ -1,6 +1,11 @@
 {
   "name": "family-budget",
   "private": true,
+  "scripts": {
+    "build": "lerna run build --parallel --stream",
+    "start": "lerna run start --parallel --stream",
+    "dev-common": "lerna run dev-common"
+  },
   "workspaces": [
     "packages/*"
   ],
