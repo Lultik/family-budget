@@ -1,0 +1,20 @@
+{
+  "name": "family-budget",
+  "private": true,
+  "scripts": {
+    "build": "lerna run build --parallel --stream",
+    "start": "lerna run start --parallel --stream",
+    "dev-common": "lerna run dev-common"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "yarn": ">=1.22.4",
+    "node": ">=18.17"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "lerna": "^8.1.3"
+  }
+}
