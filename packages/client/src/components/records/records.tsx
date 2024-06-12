@@ -17,7 +17,7 @@ export const Records: React.FC<RecordsProps> = ({}) => {
     })()
   }, []);
 
-  return records.map((record) => <div>
+  return records.map((record) => <div key={record.id}>
     {record.id} - {record.category} - {record.amount} - {record.title}
   </div>);
 };
