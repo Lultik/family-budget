@@ -1,6 +1,8 @@
 export interface Record {
-  id: string;
-  title: string;
-  amount: number;
+  _id: string;
+  value: string;
+  description: number;
   category: string;
+  createdAt: string;
+  updatedAt: string;
 }

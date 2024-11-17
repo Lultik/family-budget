@@ -12,6 +12,10 @@ async function bootstrap() {
 
   const httpAdapterHost = app.get(HttpAdapterHost);
 
+  app.enableCors({
+    origin: process.env.FRONTEND_URL,
+  });
+
   app.setGlobalPrefix('api');
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new AllExceptionsFilter(httpAdapterHost));
@@ -22,6 +26,7 @@ async function bootstrap() {
   await app.listen(PORT, () => {
     const logger = app.get(Logger);
     logger.log(`Server started on port ${PORT}`);
+    logger.fatal(process.env.FRONTEND_URL);
   });
 }
 

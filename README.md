@@ -1,4 +1,4 @@
-# Budget Record API
+# Budget Record
 
 This project is a RESTful API for managing budget records. It is built using the NestJS framework and MongoDB for data
 storage.
