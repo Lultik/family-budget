@@ -1,36 +1,28 @@
-import { NestFactory } from '@nestjs/core';
-import serverlessExpress from '@codegenie/serverless-express';
-import { Callback, Context, Handler } from 'aws-lambda';
+import { HttpAdapterHost, NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import * as dynamoose from 'dynamoose';
+import { ValidationPipe } from '@nestjs/common';
+import { AllExceptionsFilter } from './exceptions';
+import { Logger, LoggerErrorInterceptor } from 'nestjs-pino';
 
-let server: Handler;
+const PORT = process.env.PORT || 3001;
 
-async function bootstrap(): Promise<Handler> {
-  const app = await NestFactory.create(AppModule);
-  app.enableCors();
-  await app.init();
+async function bootstrap() {
+  console.log(`Starting server at port ${PORT}`);
+  const app = await NestFactory.create(AppModule, { bufferLogs: true });
 
-  const ddb = new dynamoose.aws.ddb.DynamoDB({
-    credentials: {
-      accessKeyId: process.env.ACCESS_KEY,
-      secretAccessKey: process.env.SECRET_ACCESS_KEY,
-    },
-    region: process.env.AWS_REGION,
+  const httpAdapterHost = app.get(HttpAdapterHost);
+
+  app.setGlobalPrefix('api');
+  app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalFilters(new AllExceptionsFilter(httpAdapterHost));
+
+  app.useLogger(app.get(Logger));
+  app.useGlobalInterceptors(new LoggerErrorInterceptor());
+
+  await app.listen(PORT, () => {
+    const logger = app.get(Logger);
+    logger.log(`Server started on port ${PORT}`);
   });
-
-
-  dynamoose.aws.ddb.set(ddb);
-
-  const expressApp = app.getHttpAdapter().getInstance();
-  return serverlessExpress({ app: expressApp });
 }
 
-export const handler: Handler = async (
-  event: any,
-  context: Context,
-  callback: Callback,
-) => {
-  server = server ?? (await bootstrap());
-  return server(event, context, callback);
-};
+bootstrap();
