@@ -8,14 +8,11 @@ import { transactions } from "./mockData.ts";
 export const PersonalBudget = () => {
   const [section, setSection] = useState("transactions");
 
-  const handleChange = useCallback<NonNullable<ToggleButtonGroupProps["onChange"]>>(
-    (_event, newSection) => {
-      if (newSection !== null) {
-        setSection(newSection);
-      }
-    },
-    [],
-  );
+  const handleChange = useCallback<NonNullable<ToggleButtonGroupProps["onChange"]>>((_event, newSection) => {
+    if (newSection !== null) {
+      setSection(newSection);
+    }
+  }, []);
 
   const data = transactions;
 

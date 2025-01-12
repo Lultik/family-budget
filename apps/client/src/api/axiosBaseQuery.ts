@@ -8,14 +8,11 @@ export interface CustomErrorType {
   data?: { message: string };
 }
 
-const axiosBaseQuery = (
-  axiosConfig: AxiosRequestConfig<unknown>,
-): BaseQueryFn<AxiosRequestConfig> => {
+const axiosBaseQuery = (axiosConfig: AxiosRequestConfig<unknown>): BaseQueryFn<AxiosRequestConfig> => {
   const axiosInstance = axiosCreate(
     {
       paramsSerializer: {
-        serialize: (params: unknown) =>
-          stringify(params, { arrayFormat: "comma", skipNulls: true }),
+        serialize: (params: unknown) => stringify(params, { arrayFormat: "comma", skipNulls: true }),
       },
       ...axiosConfig,
     },

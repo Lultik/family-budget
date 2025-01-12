@@ -34,19 +34,10 @@ export const NavigationBar = () => {
   );
 
   return (
-    <AppBar
-      position="fixed"
-      color="transparent"
-      sx={{ top: "auto", bottom: 0, height: 80 }}
-    >
+    <AppBar position="fixed" color="transparent" sx={{ top: "auto", bottom: 0, height: 80 }}>
       <BottomNavigation value={page} onChange={handleChangeTab}>
         {navItems.map((item) => (
-          <BottomNavigationAction
-            key={item.value}
-            label={item.label}
-            icon={item.icon}
-            value={item.value}
-          />
+          <BottomNavigationAction key={item.value} label={item.label} icon={item.icon} value={item.value} />
         ))}
       </BottomNavigation>
     </AppBar>

@@ -13,9 +13,7 @@ export const MuiBottomNavigation: Components<typeof theme>["MuiBottomNavigation"
   },
 };
 
-export const MuiBottomNavigationAction: Components<
-  typeof theme
->["MuiBottomNavigationAction"] = {
+export const MuiBottomNavigationAction: Components<typeof theme>["MuiBottomNavigationAction"] = {
   styleOverrides: {
     root: ({ theme: { palette } }) => ({
       "&.Mui-selected": {

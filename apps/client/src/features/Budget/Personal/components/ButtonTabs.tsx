@@ -1,8 +1,4 @@
-import {
-  ToggleButton,
-  ToggleButtonGroup,
-  type ToggleButtonGroupProps,
-} from "@mui/material";
+import { ToggleButton, ToggleButtonGroup, type ToggleButtonGroupProps } from "@mui/material";
 
 export interface ButtonTabsProps {
   section: string;

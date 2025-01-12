@@ -9,12 +9,7 @@ const Router = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Layout />}>
-        <Route
-          path="/"
-          element={
-            isAuthenticated ? <Navigate to="/dashboard" replace /> : <>Auth please</>
-          }
-        />
+        <Route path="/" element={isAuthenticated ? <Navigate to="/dashboard" replace /> : <>Auth please</>} />
 
         <Route path="dashboard" element={<Dashboard />} />
 

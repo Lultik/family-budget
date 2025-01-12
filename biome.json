@@ -5,13 +5,23 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
-    "lineWidth": 90,
+    "lineWidth": 120,
     "ignore": ["*generated/*.ts"]
   },
   "organizeImports": { "enabled": true },
   "linter": {
     "enabled": true,
     "rules": { "recommended": true }
+  },
+  "javascript": {
+    "formatter": {
+      "indentStyle": "space",
+      "semicolons": "always",
+      "bracketSpacing": true
+    },
+    "parser": {
+      "unsafeParameterDecoratorsEnabled": true
+    }
   },
   "files": {
     "ignore": [
