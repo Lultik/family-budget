@@ -27,6 +27,12 @@ export class BudgetRecord {
   @Prop()
   discount?: number;
 
+  @Prop()
+  type: string;
+
+  @Prop()
+  userId: string;
+
   @Prop({ default: null })
   deletedAt: Date;
 }

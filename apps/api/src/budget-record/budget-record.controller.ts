@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, NotFoundException, Param, Patch, Post, Query } from "@nestjs/common";
 import type { BudgetRecordService } from "./budget-record.service";
 import type { CreateBudgetRecordDto } from "./dto/create-budget-record.dto";
 import type { UpdateBudgetRecordDto } from "./dto/update-budget-record.dto";
@@ -13,8 +13,8 @@ export class BudgetRecordController {
   }
 
   @Get()
-  findAll() {
-    return this.budgetRecordService.findAll();
+  findAll(@Query("type") type: string, @Query("limit") limit: number, @Query("userId") userId: string) {
+    return this.budgetRecordService.findAll({ type, limit, userId });
   }
 
   @Get(":id")

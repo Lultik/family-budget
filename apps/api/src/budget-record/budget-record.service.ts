@@ -17,8 +17,8 @@ export class BudgetRecordService {
     return newRecord.save();
   }
 
-  findAll() {
-    return this.budgetRecordModel.find({ deletedAt: null });
+  findAll({ type, limit, userId }: { type: string; limit: number; userId: string }) {
+    return this.budgetRecordModel.find({ deletedAt: null, type, limit, userId });
   }
 
   async findOne(id: string) {
