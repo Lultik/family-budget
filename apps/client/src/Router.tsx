@@ -21,7 +21,8 @@ const Router = () => (
         <Route path="budget" element={<Budget />}>
           <Route index element={<Navigate to="personal" replace />} />
 
-          <Route index path="personal" element={<PersonalBudget />} />
+          <Route path="personal" element={<PersonalBudget />} />
+
           <Route index path="household" element={<div>Household</div>} />
         </Route>
 

@@ -1,15 +1,19 @@
 import { Stack } from "@mui/material";
 import { OverviewRecord } from "./OverviewRecord.tsx";
 
+const data = [
+  { title: "Total balance", amount: "1100" },
+  { title: "Revolut", amount: "600" },
+  { title: "Pekao", amount: "400" },
+  { title: "Cash", amount: "100" },
+];
+
 export const Overview = () => {
   return (
     <Stack>
-      <OverviewRecord title="Total balance" amount="$1100" />
-
-      <OverviewRecord title="Revolut" amount="$600" />
-      <OverviewRecord title="Pekao" amount="$400" />
-
-      <OverviewRecord title="Cash" amount="$100" />
+      {data.map((record) => (
+        <OverviewRecord key={record.title} {...record} />
+      ))}
     </Stack>
   );
 };

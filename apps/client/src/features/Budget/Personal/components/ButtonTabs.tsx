@@ -3,20 +3,13 @@ import {
   ToggleButtonGroup,
   type ToggleButtonGroupProps,
 } from "@mui/material";
-import { useCallback, useState } from "react";
 
-export const ButtonTabs = () => {
-  const [section, setSection] = useState("transactions");
+export interface ButtonTabsProps {
+  section: string;
+  handleChange: NonNullable<ToggleButtonGroupProps["onChange"]>;
+}
 
-  const handleChange = useCallback<NonNullable<ToggleButtonGroupProps["onChange"]>>(
-    (_event, newSection) => {
-      if (newSection !== null) {
-        setSection(newSection);
-      }
-    },
-    [],
-  );
-
+export const ButtonTabs = ({ section, handleChange }: ButtonTabsProps) => {
   return (
     <ToggleButtonGroup value={section} exclusive onChange={handleChange} fullWidth>
       <ToggleButton value="transactions">Transactions</ToggleButton>

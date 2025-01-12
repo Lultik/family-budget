@@ -22,8 +22,13 @@ export const typography: TypographyOptions = {
     lineHeight: pxToRem(22.5),
   },
   body1: {
-    fontSize: "1rem",
+    fontSize: pxToRem(16),
     lineHeight: 1.5,
+  },
+  caption: {
+    fontSize: pxToRem(12),
+    lineHeight: pxToRem(16),
+    fontWeight: 300,
   },
   button: {
     textTransform: "none",
